@@ -6,35 +6,33 @@ window.onload = function () {
 };
 
 var intervalId;
-
 var clockRunning = false;
 
 var clock = {
-
   time: 120,
-
-  reset: function () {
-
-    clock.time = 5;
-
-    $("#timer").text("Time Remaining: 120 Seconds");
-
-  },
+  // the clock start function
   start: function () {
-
     if (!clockRunning) {
       intervalId = setInterval(clock.count, 1000);
       clockRunning = true;
     }
-
   },
+
+  // the clock stop function
+  stop: function () {
+    clearInterval(intervalId);
+    clockRunning = false;
+    $("#timer").text("Time's Up");
+  },
+
+  // count the timer down in the DOM. Stop the clock when the time remaining is "0"
   count: function () {
-
     clock.time--;
-
-    console.log(clock.time);
-
+    // console.log(clock.time);
     $("#timer").text("Time Remaining: " + clock.time + " Seconds");
+    if (clock.time < 1) {
+      clock.stop();
+    }
   },
 };
 
@@ -75,7 +73,8 @@ function countIncorrects() {
 
 // Create an event listener that listens for a click on the "Done" button
 $("#done").on("click", function () {
-  // $("#trivia").text("Done");
+  clock.stop();
+  $("#timer").text("Done");
   countCorrects();
   countIncorrects();
   numUnanswered = 10 - numCorrects.length - numIncorrects.length;
