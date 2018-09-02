@@ -9,7 +9,7 @@ var intervalId;
 var clockRunning = false;
 
 var clock = {
-  time: 120,
+  time: 10,
   // the clock start function
   start: function () {
     if (!clockRunning) {
@@ -31,6 +31,7 @@ var clock = {
     // console.log(clock.time);
     $("#timer").text("Time Remaining: " + clock.time + " Seconds");
     if (clock.time < 1) {
+      gameOver();
       clock.stop();
     }
   },
@@ -86,3 +87,11 @@ $("#done").on("click", function () {
   `);
   console.log("Done");
 });
+
+var gameOver = function () {
+  $("#trivia").html(`
+<p>You had ${numCorrects.length} correct answers.</p>
+<p>You had ${numIncorrects.length} incorrect answers.</p>
+<p>You had ${numUnanswered} unanswered questions.</p>
+`);
+}

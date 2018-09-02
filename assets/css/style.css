@@ -4,21 +4,36 @@ body {
   background-color: #ccc;
 }
 
-p, h1, button, body, .trivia, .question {
+p, button, body, .trivia, .question {
   font-size: 138%;
-  line-height: 175%;
+  line-height: 150%;
+}
+
+h1 {
+  font-weight: bold;
 }
 
 form {
-  font-size: 75%;
+  font-size: 100%;
 }
 
 button {
   background-color: #6b6;
   width: 350px;
   margin: auto;
+  border: none;
+  border-radius: 35px;
 }
 
 input[type='radio'] { 
   transform: scale(2);
+}
+
+#timer {
+  font-size: 138%;
+  padding: 25px 25px 25px 25px;
+  margin: 10px 10px 10px 10px;
+  background-color: #222;
+  color: #6b6;
+  font-weight: bold;
 }
