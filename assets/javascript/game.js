@@ -38,8 +38,8 @@ var clock = {
 
 // Create a function that counts correct, incorrect, and unanswered questions when the time runs out or the "Done" button is clicked
 
-var corrects = document.getElementsByName("correct");
-var incorrects = document.getElementsByName("incorrect");
+var corrects = document.getElementsByClassName("correct");
+var incorrects = document.getElementsByClassName("incorrect");
 numCorrects = [];
 numIncorrects = []
 numUnanswered = 0;

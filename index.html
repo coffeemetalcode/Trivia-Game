@@ -26,128 +26,110 @@
 
   <!-- The next section sets up the quetion divs and answer choices. Use the value 'correct' to capture and count correct responses, and 'incorrect' to capture and count incorrect responses in the *.js file -->
   <div id="trivia">
-    <div class="question">
-      <p>
-        1. Question
-      </p>
-      <form>
-        <!-- move the position of the correct response around for variety -->
-        <input type="radio" name="correct">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-      </form>
+    <ol>
+      <li class="question">
+        Javascript is a ____.
+        <form name="q1">
+          <!-- move the position of the correct response around for variety -->
+          <input type="radio" class="incorrect" name="q1"> JQuery Library.<br>
+          <input type="radio" class="incorrect" name="q1"> CSS Framework.<br>
+          <input type="radio" class="correct" name="q1"> Scripting Language for web browsers and servers.<br>
+          <input type="radio" class="incorrect" name="q1"> Newer variant on the Java programming language.<br>
+        </form>
+      </li>
       <br>
-    </div>
-    <div class="question">
-      <p>
-        2. Question
-      </p>
-      <form>
-        <!-- move the position of the correct response around for variety -->
-        <input type="radio" name="correct">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-      </form>
+      <li class="question">
+        How do you declare a function <em>with parameters</em> in Javascript?
+        <form name="q2">
+          <!-- move the position of the correct response around for variety -->
+          <input type="radio" class="incorrect" name="q2"> <code>$(function) {...}</code><br>
+          <input type="radio" class="incorrect" name="q2"> <code>function  functionName() {...}</code><br>
+          <input type="radio" class="incorrect" name="q2"> <code>functionName function() {...}</code><br>
+          <input type="radio" class="correct" name="q2"> <code>function functionName(parameter1, parameter2) {...}</code><br>
+        </form>
+      </li>
       <br>
-    </div>
-    <div class="question">
-      <p>
-        3. Question
-      </p>
-      <form>
-        <input type="radio" name="correct">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-      </form>
+      <li class="question">
+        How do you declare a variable in Javascript?
+        <form name="q3">
+          <input type="radio" class="correct" name="q3">   <code>var variableName = value;</code><br>
+          <input type="radio" class="incorrect" name="q3">   <code>$variableName value;</code><br>
+          <input type="radio" class="incorrect" name="q3">   <code>var variableName value;</code><br>
+          <input type="radio" class="incorrect" name="q3">   <code>$var variableName = value;</code><br>
+        </form>
+      </li>
       <br>
-    </div>
-    <div class="question">
-      <p>
-        4. Question
-      </p>
-      <form>
-        <input type="radio" name="correct">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-      </form>
+      <li class="question">
+        <code>pets = ["cat", "dog", "ferret"];</code> is an example of ____.
+        <form name="q4">
+          <input type="radio" class="incorrect" name="q4">   a variable.<br>
+          <input type="radio" class="incorrect" name="q4">   an object.<br>
+          <input type="radio" class="incorrect" name="q4">   JSON.<br>
+          <input type="radio" class="correct" name="q4">   an array.<br>
+        </form>
+      </li>
       <br>
-    </div>
-    <div class="question">
-      <p>
-        5. Question
-      </p>
-      <form>
-        <input type="radio" name="correct">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-      </form>
+      <li class="question">
+        <code>employee = { firstName: "Jack", lastName: "Skellington", occupation: "HR Manager" }</code> is an example of ____.
+        <form name="q5">
+          <input type="radio" class="incorrect" name="q5">   a variable.<br>
+          <input type="radio" class="incorrect" name="q5">   an object.<br>
+          <input type="radio" class="incorrect" name="q5">   JSON.<br>
+          <input type="radio" class="incorrect" name="q5">   an array.<br>
+        </form>
+      </li>
       <br>
-    </div>
-    <div class="question">
-      <p>
-        6. Question
-      </p>
-      <form>
-        <input type="radio" name="correct">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-      </form>
+      <li class="question">
+        Question
+        <form name="q6">
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+        </form>
+      </li>
       <br>
-    </div>
-    <div class="question">
-      <p>
-        7. Question
-      </p>
-      <form>
-        <input type="radio" name="correct">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-      </form>
+      <li class="question">
+        Question
+        <form name="q7">
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+        </form>
+      </li>
       <br>
-    </div>
-    <div class="question">
-      <p>
-        8. Question
-      </p>
-      <form>
-        <input type="radio" name="correct">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-      </form>
+      <li class="question">
+        Question
+        <form name="q8">
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+        </form>
+      </li>
       <br>
-    </div>
-    <div class="question">
-      <p>
-        9. Question
-      </p>
-      <form>
-        <input type="radio" name="correct">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-      </form>
+      <li class="question">
+        Question
+        <form name="q9">
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+        </form>
+      </li>
       <br>
-    </div>
-    <div class="question">
-      <p>
-        10. Question
-      </p>
-      <form>
-        <input type="radio" name="correct">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-        <input type="radio" name="incorrect">Choice
-      </form>
+      <li class="question">
+        Question
+        <form name="q10">
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+          <input type="radio" class="incorrect" name="q2">Choice<br>
+        </form>
+      </li>
       <br>
-    </div>
+    </ol>
   </div>
 
   <div>

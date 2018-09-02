@@ -1,0 +1,24 @@
+body {
+  width: 980px;
+  margin: auto;
+  background-color: #ccc;
+}
+
+p, h1, button, body, .trivia, .question {
+  font-size: 138%;
+  line-height: 175%;
+}
+
+form {
+  font-size: 75%;
+}
+
+button {
+  background-color: #6b6;
+  width: 350px;
+  margin: auto;
+}
+
+input[type='radio'] { 
+  transform: scale(2);
+}
