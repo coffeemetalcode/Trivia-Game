@@ -1,7 +1,7 @@
 body {
   width: 980px;
   margin: auto;
-  background-color: #ccc;
+  background-color: #f4f4d7;
 }
 
 p, button, body, .trivia, .question {
@@ -32,7 +32,7 @@ input[type='radio'] {
 #timer {
   font-size: 138%;
   padding: 25px 25px 25px 25px;
-  margin: 10px 10px 10px 10px;
+  margin: 10px 0px 10px 0px;
   background-color: #222;
   color: #6b6;
   font-weight: bold;

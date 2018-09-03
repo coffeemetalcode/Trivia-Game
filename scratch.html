@@ -53,7 +53,7 @@
       // count the timer down in the DOM. Stop the clock when the time remaining is "0"
       count: function () {
         clock.time--;
-        // console.log(clock.time);
+        console.log(clock.time);
         $("#timer").text("Time Remaining: " + clock.time + " Seconds");
         if (clock.time < 1) {
           clock.stop();

@@ -2,18 +2,26 @@
 
 // Create a timer
 window.onload = function () {
-  $("#start").on("click", clock.start);
+  $("#start").on("click", trivia.start);
 };
+
+// Create a function that counts correct, incorrect, and unanswered questions when the time runs out or the "Done" button is clicked
+
+var corrects = document.getElementsByClassName("correct");
+var incorrects = document.getElementsByClassName("incorrect");
+numCorrects = [];
+numIncorrects = []
+numUnanswered = 0;
 
 var intervalId;
 var clockRunning = false;
 
-var clock = {
-  time: 10,
+var trivia = {
+  time: 3,
   // the clock start function
   start: function () {
     if (!clockRunning) {
-      intervalId = setInterval(clock.count, 1000);
+      intervalId = setInterval(trivia.count, 1000);
       clockRunning = true;
     }
   },
@@ -27,71 +35,60 @@ var clock = {
 
   // count the timer down in the DOM. Stop the clock when the time remaining is "0"
   count: function () {
-    clock.time--;
-    // console.log(clock.time);
-    $("#timer").text("Time Remaining: " + clock.time + " Seconds");
-    if (clock.time < 1) {
-      gameOver();
-      clock.stop();
+    trivia.time--;
+    // console.log(trivia.time);
+    $("#timer").text("Time Remaining: " + trivia.time + " Seconds");
+    if (trivia.time < 1) {
+      trivia.gameOver();
+      trivia.stop();
     }
   },
+
+  countCorrects: function () {
+    for (var i = 0, length = corrects.length; i < length; i++) {
+      if (corrects[i].checked) {
+        numCorrects.push(corrects[i]);
+        // console.log(corrects[i].value);
+        // console.log(numCorrects);
+
+        // break;
+      }
+    }
+    // console.log("You got " + numCorrects.length + " correct.");
+  },
+
+  countIncorrects: function () {
+    for (var i = 0, length = incorrects.length; i < length; i++) {
+      if (incorrects[i].checked) {
+        numIncorrects.push(incorrects[i]);
+        // console.log(incorrects[i].value);
+        // console.log(numIncorrects);
+
+        // break;
+      }
+    }
+    // console.log("You got " + numIncorrects.length + " incorrect.");
+  },
+
+  // Create an event listener that listens for a click on the "Done" button
+  done: $("#done").on("click", function () {
+    trivia.stop();
+    trivia.gameOver();
+    $("#timer").text("Done");
+  }),
+
+  // Function to run stats at the end of the game and output results to the DOM
+  gameOver: function () {
+    trivia.countCorrects();
+    trivia.countIncorrects();
+    numUnanswered = 10 - numCorrects.length - numIncorrects.length;
+    $("#start").html("PLAY AGAIN");
+    $("#done").empty();
+    $("#trivia").html(`
+      <p>You had ${numCorrects.length} correct answers.</p>
+      <p>You had ${numIncorrects.length} incorrect answers.</p>
+      <p>You had ${numUnanswered} unanswered questions.</p>
+    `);
+    // $("#start").on("click", window.reload());
+  }
 };
-
-// Create a function that counts correct, incorrect, and unanswered questions when the time runs out or the "Done" button is clicked
-
-var corrects = document.getElementsByClassName("correct");
-var incorrects = document.getElementsByClassName("incorrect");
-numCorrects = [];
-numIncorrects = []
-numUnanswered = 0;
-
-function countCorrects() {
-
-  for (var i = 0, length = corrects.length; i < length; i++) {
-    if (corrects[i].checked) {
-      numCorrects.push(corrects[i]);
-      // console.log(corrects[i].value);
-      // console.log(numCorrects);
-
-      // break;
-    }
-  }
-  console.log("You got " + numCorrects.length + " correct.");
-}
-
-function countIncorrects() {
-  for (var i = 0, length = incorrects.length; i < length; i++) {
-    if (incorrects[i].checked) {
-      numIncorrects.push(incorrects[i]);
-      // console.log(incorrects[i].value);
-      // console.log(numIncorrects);
-
-      // break;
-    }
-  }
-  console.log("You got " + numIncorrects.length + " incorrect.");
-}
-
-// Create an event listener that listens for a click on the "Done" button
-$("#done").on("click", function () {
-  clock.stop();
-  $("#timer").text("Done");
-  countCorrects();
-  countIncorrects();
-  numUnanswered = 10 - numCorrects.length - numIncorrects.length;
-  console.log("You had " + numUnanswered + " unanswered questions.");
-  $("#trivia").html(`
-    <p>You had ${numCorrects.length} correct answers.</p>
-    <p>You had ${numIncorrects.length} incorrect answers.</p>
-    <p>You had ${numUnanswered} unanswered questions.</p>
-  `);
-  console.log("Done");
-});
-
-var gameOver = function () {
-  $("#trivia").html(`
-<p>You had ${numCorrects.length} correct answers.</p>
-<p>You had ${numIncorrects.length} incorrect answers.</p>
-<p>You had ${numUnanswered} unanswered questions.</p>
-`);
-}
