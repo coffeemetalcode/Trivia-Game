@@ -17,7 +17,7 @@ var intervalId;
 var clockRunning = false;
 
 var trivia = {
-  time: 3,
+  time: 120,
   // the clock start function
   start: function () {
     if (!clockRunning) {
