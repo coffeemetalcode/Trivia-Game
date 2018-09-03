@@ -92,6 +92,7 @@ var trivia = {
     `);
     // This breaks the trivia.stop function for some reason, and doesn't work as expected besides
     // $("#start").on("click", window.reload());
+    // $("#start").on("click", this.reload(forceGet));
   }
 };
 
