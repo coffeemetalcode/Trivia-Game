@@ -82,6 +82,7 @@ var trivia = {
     trivia.countCorrects();
     trivia.countIncorrects();
     numUnanswered = 10 - numCorrects.length - numIncorrects.length;
+    // TODO: make the #start button reset the page to original state
     $("#start").html("PLAY AGAIN");
     $("#done").empty();
     $("#trivia").html(`
@@ -89,6 +90,10 @@ var trivia = {
       <p>You had ${numIncorrects.length} incorrect answers.</p>
       <p>You had ${numUnanswered} unanswered questions.</p>
     `);
+    // This breaks the trivia.stop function for some reason, and doesn't work as expected besides
     // $("#start").on("click", window.reload());
   }
 };
+
+// TODO: make #start and #timer sticky at the top
+// TODO: make #done sticky at the bottom
