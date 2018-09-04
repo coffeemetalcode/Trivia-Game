@@ -21,6 +21,9 @@ button {
   background-color: #6b6;
   width: 350px;
   margin: auto;
+  padding: 10px 10px 10px 10px;
+  margin-right: 100px;
+  float: left;
   border: none;
   border-radius: 35px;
 }
@@ -36,4 +39,19 @@ input[type='radio'] {
   background-color: #222;
   color: #6b6;
   font-weight: bold;
+}
+
+#trivia {
+  padding-top: 165px;
+  float: none;
+}
+
+#head-board {
+  position: fixed;
+  padding-bottom: 25px;
+  width: 980px;
+  top: 0px;
+  background-color: #f4f4d7;
+  opacity: 1;
+  z-index: 1;
 }

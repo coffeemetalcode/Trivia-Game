@@ -3,6 +3,7 @@
 // Create a timer
 window.onload = function () {
   $("#start").on("click", trivia.start);
+  trivia.autoStart();
 };
 
 // Create a function that counts correct, incorrect, and unanswered questions when the time runs out or the "Done" button is clicked
@@ -84,15 +85,20 @@ var trivia = {
     numUnanswered = 10 - numCorrects.length - numIncorrects.length;
     // TODO: make the #start button reset the page to original state
     $("#start").html("PLAY AGAIN");
-    $("#done").empty();
+    // $("#done").empty();
     $("#trivia").html(`
       <p>You had ${numCorrects.length} correct answers.</p>
       <p>You had ${numIncorrects.length} incorrect answers.</p>
       <p>You had ${numUnanswered} unanswered questions.</p>
     `);
+
     // This breaks the trivia.stop function for some reason, and doesn't work as expected besides
     // $("#start").on("click", window.reload());
     // $("#start").on("click", this.reload(forceGet));
+  },
+  autoStart: function () {
+    $(".correct").on("click", trivia.start);
+    $(".incorrect").on("click", trivia.start);
   }
 };
 
