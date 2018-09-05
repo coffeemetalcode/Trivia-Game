@@ -1,13 +1,21 @@
 // Javascript Trivia Game - Answer basic questions about Javascript
 
+// var startDisabled = $("#start").disabled = true;
+
 // Create a timer
 window.onload = function () {
-  $("#start").on("click", trivia.start);
+  tQuestions();
   trivia.autoStart();
+  $("#start").on("click", function () {
+    trivia.start();
+    $("#start").html("RUNNING");
+    // trivia.startDisabled();
+  })
 };
 
 // Create a function that counts correct, incorrect, and unanswered questions when the time runs out or the "Done" button is clicked
 
+// var location = location;
 var corrects = document.getElementsByClassName("correct");
 var incorrects = document.getElementsByClassName("incorrect");
 numCorrects = [];
@@ -18,12 +26,13 @@ var intervalId;
 var clockRunning = false;
 
 var trivia = {
-  time: 120,
+  time: 3,
   // the clock start function
   start: function () {
     if (!clockRunning) {
       intervalId = setInterval(trivia.count, 1000);
       clockRunning = true;
+      trivia.startDisabled();
     }
   },
 
@@ -31,7 +40,12 @@ var trivia = {
   stop: function () {
     clearInterval(intervalId);
     clockRunning = false;
-    $("#timer").text("Time's Up");
+  },
+
+  startDisabled: function () {
+    if (clockRunning) {
+      $("#start").disabled = true;
+    }
   },
 
   // count the timer down in the DOM. Stop the clock when the time remaining is "0"
@@ -40,8 +54,9 @@ var trivia = {
     // console.log(trivia.time);
     $("#timer").text("Time Remaining: " + trivia.time + " Seconds");
     if (trivia.time < 1) {
-      trivia.gameOver();
       trivia.stop();
+      trivia.gameOver();
+      $("#timer").text("Time's Up");
     }
   },
 
@@ -91,14 +106,20 @@ var trivia = {
       <p>You had ${numIncorrects.length} incorrect answers.</p>
       <p>You had ${numUnanswered} unanswered questions.</p>
     `);
-
-    // This breaks the trivia.stop function for some reason, and doesn't work as expected besides
-    // $("#start").on("click", window.reload());
-    // $("#start").on("click", this.reload(forceGet));
+    $("#start").on("click", function () {
+      trivia.startDisabled();
+      $("#start").html("RUNNING");
+      trivia.time = 120;
+      tQuestions();
+      trivia.start();
+      $("#start").disabled = true;
+      console.log("Play Again");
+    });
   },
   autoStart: function () {
     $(".correct").on("click", trivia.start);
     $(".incorrect").on("click", trivia.start);
+    // startDisabled;
   }
 };
 
