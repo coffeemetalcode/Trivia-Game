@@ -26,7 +26,7 @@ var intervalId;
 var clockRunning = false;
 
 var trivia = {
-  time: 3,
+  time: 120,
   // the clock start function
   start: function () {
     if (!clockRunning) {
@@ -115,6 +115,7 @@ var trivia = {
       $("#start").disabled = true;
       console.log("Play Again");
     });
+    trivia.startDisabled();
   },
   autoStart: function () {
     $(".correct").on("click", trivia.start);
