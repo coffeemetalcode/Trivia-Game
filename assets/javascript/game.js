@@ -10,6 +10,7 @@ window.onload = function () {
     trivia.start();
     $("#start").html("RUNNING");
     // trivia.startDisabled();
+    $("#start").off();
   })
 };
 
@@ -18,9 +19,16 @@ window.onload = function () {
 // var location = location;
 var corrects = document.getElementsByClassName("correct");
 var incorrects = document.getElementsByClassName("incorrect");
-numCorrects = [];
-numIncorrects = []
-numUnanswered = 0;
+
+function reset() {
+  numCorrects = [];
+  numIncorrects = []
+  numUnanswered = 0;
+}
+
+// numCorrects = [];
+// numIncorrects = []
+// numUnanswered = 0;
 
 var intervalId;
 var clockRunning = false;
@@ -29,11 +37,14 @@ var trivia = {
   time: 120,
   // the clock start function
   start: function () {
+    reset();
     if (!clockRunning) {
       intervalId = setInterval(trivia.count, 1000);
       clockRunning = true;
-      trivia.startDisabled();
+      $("#start").html("RUNNING");
+      // trivia.startDisabled();
     }
+    // trivia.startDisabled();
   },
 
   // the clock stop function
@@ -42,14 +53,15 @@ var trivia = {
     clockRunning = false;
   },
 
-  startDisabled: function () {
-    if (clockRunning) {
-      $("#start").disabled = true;
-    }
-  },
+  // startDisabled: function () {
+  //   if (clockRunning) {
+  //     $("#start").disabled = true;
+  //   }
+  // },
 
   // count the timer down in the DOM. Stop the clock when the time remaining is "0"
   count: function () {
+    // trivia.startDisabled();
     trivia.time--;
     // console.log(trivia.time);
     $("#timer").text("Time Remaining: " + trivia.time + " Seconds");
@@ -107,22 +119,23 @@ var trivia = {
       <p>You had ${numUnanswered} unanswered questions.</p>
     `);
     $("#start").on("click", function () {
-      trivia.startDisabled();
+      reset();
+      // trivia.startDisabled();
       $("#start").html("RUNNING");
       trivia.time = 120;
       tQuestions();
       trivia.start();
-      $("#start").disabled = true;
+      $("#start").off();
       console.log("Play Again");
     });
-    trivia.startDisabled();
+    // trivia.startDisabled();
   },
   autoStart: function () {
     $(".correct").on("click", trivia.start);
     $(".incorrect").on("click", trivia.start);
+    // $("#start").html("RUNNING");
     // startDisabled;
   }
 };
 
-// TODO: make #start and #timer sticky at the top
-// TODO: make #done sticky at the bottom
+// There is a fair amount of repetition in the code that I can clean up with variables and functions

@@ -1,7 +1,7 @@
 body {
   width: 980px;
   margin: auto;
-  background-color: #f4f4d7;
+  background-color: #eeeeeeea;
 }
 
 p, button, body, .trivia, .question {
@@ -52,7 +52,7 @@ input[type='radio'] {
   padding-bottom: 25px;
   width: 980px;
   top: 0px;
-  background-color: #f4f4d7;
+  background-color: #eeeeeeea;
   opacity: 1;
   z-index: 1;
 }
